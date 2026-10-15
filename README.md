@@ -5,7 +5,7 @@ A small asynchronous state machine for TypeScript, with no dependencies.
 You list the states, say where each may be entered from, and give each an `enter` to do its work. The machine holds the current state and refuses a transition that is not legal.
 
 ```ts
-import { StateMachine } from 'micro-fsm'
+import { StateMachine } from '@dmccuskey/micro-fsm'
 
 type State = 'idle' | 'loading' | 'loaded' | 'failed'
 
@@ -47,18 +47,18 @@ The following steps take about five minutes, on any system with [Bun](https://bu
 
 Prerequisite: Bun (`bun --version`).
 
-The package is not published yet. It is part of the [LiveSystem](../../README.md) workspace, so the steps run inside a clone of it.
+The package is not on npm yet: it installs from GitHub, at a tagged version.
 
-1. In the clone, install the workspace:
+1. In a new folder, install it:
 
     ```sh
-    bun install
+    bun add github:dmccuskey/micro-fsm#v0.1.0
     ```
 
-2. Save this as `packages/micro-fsm/try.ts`:
+2. Save this as `try.ts`:
 
     ```ts
-    import { StateMachine, TransitionError } from 'micro-fsm'
+    import { StateMachine, TransitionError } from '@dmccuskey/micro-fsm'
 
     type State = 'closed' | 'open' | 'locked'
 
@@ -84,7 +84,7 @@ The package is not published yet. It is part of the [LiveSystem](../../README.md
 3. Run it:
 
     ```sh
-    bun packages/micro-fsm/try.ts
+    bun try.ts
     ```
 
     ```text
@@ -93,7 +93,9 @@ The package is not published yet. It is part of the [LiveSystem](../../README.md
     Cannot transition from 'open' to 'locked'
     ```
 
-    `Cannot find package 'micro-fsm'` means step 1 was skipped, or the file is outside the workspace.
+    `Cannot find package '@dmccuskey/micro-fsm'` means step 1 was skipped, or ran in another folder.
+
+The package exports its TypeScript source, so it runs as it is under Bun, and in an app built by a bundler such as Vite. Plain Node needs a build, which comes with the npm release.
 
 Delete `try.ts` when you are done.
 
@@ -175,6 +177,16 @@ An error thrown by a hook is not wrapped in a `TransitionError`.
 
 Tiny FSM was taken.
 
+## Development
+
+```sh
+bun install
+bun test
+bun run typecheck
+```
+
+Changes by version: [CHANGELOG.md](CHANGELOG.md).
+
 ## License
 
-MIT, as the [LiveSystem repository](../../LICENSE).
+MIT: [LICENSE](LICENSE). It began in the [LiveSystem](https://github.com/dmccuskey/live-system) repository, as the state machine behind its lifecycle.

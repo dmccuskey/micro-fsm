@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test'
-import { StateMachine, TransitionError } from 'micro-fsm'
-import type { MachineConfig } from 'micro-fsm'
+import { StateMachine, TransitionError } from '@dmccuskey/micro-fsm'
+import type { MachineConfig } from '@dmccuskey/micro-fsm'
 
 type State = 'created' | 'ready' | 'running' | 'stopped'
 
