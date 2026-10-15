@@ -1,10 +1,24 @@
 {
-    "name": "micro-fsm",
-    "version": "0.0.0",
+    "name": "@dmccuskey/micro-fsm",
+    "version": "0.1.0",
     "description": "A small state machine with no dependencies",
     "license": "MIT",
     "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dmccuskey/micro-fsm.git"
+    },
+    "homepage": "https://github.com/dmccuskey/micro-fsm#readme",
+    "bugs": "https://github.com/dmccuskey/micro-fsm/issues",
     "exports": {
         ".": "./src/index.ts"
+    },
+    "scripts": {
+        "test": "bun test",
+        "typecheck": "bun --bun tsc --noEmit"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "typescript": "^5.9.0"
     }
 }
